@@ -2,11 +2,34 @@ import React from 'react';
 import ProductListItem from "../ProductListItem";
 import ProductDetails from "../ProductDetails";
 import './ProductView.css'
+import { useState, useEffect } from "react"
 
 function ProductView({ products }) {
 
   // TODO: Replace with state variable
-  const sideOpen = true;
+  const [sideOpen, setSidePanelOpen] = useState("true")
+  
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  useEffect(() => {
+    setSidePanelOpen(true);
+  }, [selectedItem]);
+
+  useEffect(() => {
+    setSelectedItem(null)
+  },[sideOpen])
+  
+
+  function toggleSidePanel(){
+    if(sideOpen){
+      setSidePanelOpen(false);
+    } else {
+      setSidePanelOpen(true);
+    }
+  }
+
+
+
 
   return (
     <div className="product-view">
@@ -17,19 +40,19 @@ function ProductView({ products }) {
             <ProductListItem
               key={item.id}
               product={item}
-              onClick={() => console.log('SELECT PRODUCT', item)}
-            />
+              onClick={() => setSelectedItem(item)}
+              />
           )}
         </div>
       </div>
       <div className="product-side-panel">
         <div className="product-side-panel-toggle-wrapper">
           <div className="product-side-panel-toggle"
-               onClick={() => console.log('TOGGLE SIDE PANEL')}>
+               onClick={() => {toggleSidePanel()}}>
             {sideOpen ? '>' : '<'}
           </div>
         </div>
-        <ProductDetails visible={sideOpen} />
+        <ProductDetails product={selectedItem} visible={sideOpen} />
       </div>
     </div>
   );

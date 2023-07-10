@@ -11,6 +11,32 @@ function ProductDetails({ product, visible }) {
     </div>
   )
 
+  // const [sidePanelValue, setSidePanelValue] = useState({
+  //   name: "",
+  //   id:"",
+  //   price: "",
+  //   discription: "",
+  //   details: ""
+
+  // });
+  // function setItemValues(item){
+  //   // debugger;   
+  //   const newObj = {
+  //       name: item.name,
+  //       id: item.id,
+  //       price: item.price,
+  //       description: item.description,
+  
+  //     }
+  //   setSidePanelValue(newObj)
+  //   return(
+  //       newObj
+  //       //<h2>{item.name}</h2>
+  //   )
+  // }
+
+  console.log(product)
+
   return (
     <div className="product-details">
       <p className="product-info">{product.name}</p>
