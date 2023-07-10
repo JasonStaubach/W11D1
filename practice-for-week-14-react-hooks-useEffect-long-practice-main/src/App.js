@@ -26,7 +26,7 @@ function App() {
     // console.log('brown', isBrown)
     // console.log('light brown', isLightBrown)
     // console.log('yellow', isYellow)
-  }, [isRed, isOrange, isOrange, isBrown, isLightBrown, isYellow])
+  }, [isRed, isOrange, isBrown, isLightBrown, isYellow])
 
   return (
     <>
@@ -82,7 +82,7 @@ function App() {
         featherCount={featherCount}
         featherColors={featherColors}
       />
-      <Message size={size} />
+      <Message size={size} featherCount={featherCount} />
     </>
   );
 }
